@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Creacion-Referencias/static/css/main.ac365c59.css",
+    "main.js": "/Creacion-Referencias/static/js/main.edd98e9f.js",
+    "index.html": "/Creacion-Referencias/index.html",
+    "main.ac365c59.css.map": "/Creacion-Referencias/static/css/main.ac365c59.css.map",
+    "main.edd98e9f.js.map": "/Creacion-Referencias/static/js/main.edd98e9f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac365c59.css",
+    "static/js/main.edd98e9f.js"
+  ]
+}
