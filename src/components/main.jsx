@@ -21,9 +21,6 @@ const Main = () => {
   const [proveedores, setProveedores] = useState([]);
   const onSubmit = (data) => {
     setValue("proveedores", proveedores);
-    console.log(data);
-    if (!validarSelect(data)) return false;
-
     var now = new Date();
     var fecha =
       now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
@@ -32,6 +29,8 @@ const Main = () => {
     var hora = now.getHours() + ":" + minutos;
     var fechayHora = fecha + " " + hora;
     setValue("fecha", fechayHora);
+    console.log(data);
+    if (!validarSelect(data)) return false;
     console.log(proveedores);
     console.log(data.proveedores);
     if (data.proveedores === undefined) {
@@ -105,6 +104,7 @@ const Main = () => {
         document.getElementById("unidad_medida_1").selectedIndex = 0;
         document.getElementById("unidad_medida_2").selectedIndex = 0;
         setProveedores([]);
+        setValue("proveedores", [])
       }
     });
   };
@@ -261,14 +261,28 @@ const Main = () => {
               />
             </div>
           </div>
-          <Input
-            register={register}
-            campo={"skuRefProveedor"}
-            required={true}
-          />
+          <div className="row g-2 align-items-center">
+            <label htmlFor="recurso" className="col-sm-3 col-form-label">
+              SKU
+              <span className="text-danger"> *</span>
+            </label>
+            <div className="col-sm-8">
+              <input
+                  placeholder="SKU"
+                  className="form-control mb-2"
+                  {...register("skuRefProveedor", { required: true, maxLength: 19})}
+                  onChange={onChange}
+                />
+            </div>
+          </div>
           {errors?.skuRefProveedor?.type === "required" && (
             <div class="alert alert-danger" role="alert">
               SKU o Referencia del Proveedor Requerida
+            </div>
+          )}
+          {errors?.skuRefProveedor?.type === "maxLength" && (
+            <div class="alert alert-danger" role="alert">
+              SKU cuenta con Maximo 19 caracteres
             </div>
           )}
           <Input register={register} campo={"descripcion"} required={true} />

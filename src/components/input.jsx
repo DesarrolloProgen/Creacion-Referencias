@@ -15,7 +15,7 @@ const campos = {
   diasStock: "Días stock de seguridad",
   ubicacion1: "Ubicacion 1",
   ubicacion2: "Ubicacion 2",
-  precioVenta: "Precio de compra (Pesos $)",
+  precioVenta: "Precio de venta",
   cantidadProveedores: "Cantidad de Proveedores",
   nombre: "Nombre",
   correo_electronico: "Email"

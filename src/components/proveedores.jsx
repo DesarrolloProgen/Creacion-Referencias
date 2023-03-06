@@ -22,11 +22,11 @@ const Proveedores = ({ proveedores, setProveedores }) => {
     if (
       proveedor.nit == null ||
       proveedor.nombre == null ||
-      proveedor.precio_venta == null ||
+      proveedor.precio_compra == null ||
       proveedor.tiempo_entrega == null ||
       proveedor.nit === "" ||
       proveedor.nombre === "" ||
-      proveedor.precio_venta === "" ||
+      proveedor.precio_compra === "" ||
       proveedor.tiempo_entrega === ""
     ) {
       Swal.fire({
@@ -97,13 +97,13 @@ const Proveedores = ({ proveedores, setProveedores }) => {
         <div className="col-sm-4">
           <div className="row g-2 align-items-center">
             <label htmlFor="recurso" className="col-sm-4 col-form-label">
-              Precio de Venta<span className="text-danger"> *</span>
+              Precio de Compra '($ pesos)'<span className="text-danger"> *</span>
             </label>
             <div className="col-sm-8">
               <input
-                placeholder="Precio de Venta"
+                placeholder="Precio de Compra"
                 className="form-control mb-2"
-                name="precio_venta"
+                name="precio_compra"
                 onChange={handleChange}
               />
             </div>
@@ -170,7 +170,7 @@ const Proveedores = ({ proveedores, setProveedores }) => {
                   <td className="text-center">{proveedor.nit}</td>
                   <td className="text-center">{proveedor.nombre}</td>
                   <td className="text-center">{proveedor.refCruzada}</td>
-                  <td className="text-center">{proveedor.precio_venta}</td>
+                  <td className="text-center">{proveedor.precio_compra}</td>
                   <td className="text-center">{proveedor.tiempo_entrega}</td>
                   <td className="text-center">{proveedor.tiempo_transporte}</td>
                   <td className="text-center">
