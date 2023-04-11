@@ -19,6 +19,8 @@ const Main = () => {
   } = useForm();
   const [showOrigen, setShowOrigen] = useState();
   const [proveedores, setProveedores] = useState([]);
+  const [venta, setVenta] = useState(false);
+  console.log(venta)
   const onSubmit = (data) => {
     setValue("proveedores", proveedores);
     var now = new Date();
@@ -167,6 +169,12 @@ const Main = () => {
       });
       return false;
     }
+    if (data.precioVenta === "" && venta) {
+      setError("precioVenta", {
+        type: "required",
+      });
+      return false;
+    }
     if (data.categoria_1 === "Selecciona el Categoria 1") {
       setError("categoria_1", {
         type: "required",
@@ -213,13 +221,21 @@ const Main = () => {
     return true;
   };
 
+  function onChangeTipoProducto(e) {
+    e.target.value === "RP - Repuestos" || e.target.value === "AC - Accesorios" || e.target.value === "TR - Productos Terminados"
+      ?
+      setVenta(true)
+      :
+      setVenta(false)
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="container">
         <div className="row justify-content-md-left">
           <div className="row g-2 align-items-center">
             <div className="col-sm-6">
-              <Select json={json} register={register} campo={"tipo_producto"} />
+              <Select json={json} register={register} campo={"tipo_producto"} onChange={(e) => onChangeTipoProducto(e)}/>
               {errors?.tipo_producto?.type === "required" && (
                 <div class="alert alert-danger" role="alert">
                   {errors?.tipo_producto?.message}
@@ -460,8 +476,13 @@ const Main = () => {
               <Input
                 register={register}
                 campo={"precioVenta"}
-                required={false}
+                required={venta}
               />
+              {errors?.precioVenta?.type === "required" && (
+                <div class="alert alert-danger" role="alert">
+                  El precio de venta es obligatoria
+                </div>
+              )}
             </div>
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"categoria_1"} />
