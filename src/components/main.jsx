@@ -265,7 +265,7 @@ const Main = () => {
               />
               {errors?.origen?.type === "required" && (
                 <div class="alert alert-danger" role="alert">
-                  {errors?.origen?.message}
+                  {errors.origen.message}
                 </div>
               )}
             </div>
@@ -273,8 +273,13 @@ const Main = () => {
               <Input
                 register={register}
                 campo={"copiarReferencia"}
-                required={false}
+                required={true}
               />
+              {errors?.copiarReferencia?.type === "required" && (
+                <div class="alert alert-danger" role="alert">
+                  Copia desde referencia es obligatoria
+                </div>
+              )}
             </div>
           </div>
           <div className="row g-2 align-items-center">
