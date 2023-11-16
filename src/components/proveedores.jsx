@@ -41,7 +41,7 @@ const Proveedores = ({ proveedores, setProveedores }) => {
 
   const deleteProveedor = (e, index) => {
     e.preventDefault();
-    setProveedores(proveedores.filter((item, i) => i !== index));
+    setProveedores(proveedores.filter((_, i) => i !== index));
   };
 
   return (

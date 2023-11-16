@@ -7,6 +7,7 @@ import InputRadio from "./radio";
 import Select from "./select";
 import Swal from "sweetalert2";
 import axios from "axios";
+import Referencias from "./referencias";
 
 const Main = () => {
   const {
@@ -19,10 +20,13 @@ const Main = () => {
   } = useForm();
   const [showOrigen, setShowOrigen] = useState();
   const [proveedores, setProveedores] = useState([]);
+  const [referencias, setReferencias] = useState([]);
+
   const [venta, setVenta] = useState(false);
   console.log(venta)
   const onSubmit = (data) => {
     setValue("proveedores", proveedores);
+    setValue("referencias", referencias);
     var now = new Date();
     var fecha =
       now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
@@ -34,7 +38,9 @@ const Main = () => {
     console.log(data);
     if (!validarSelect(data)) return false;
     console.log(proveedores);
+    console.log(referencias);
     console.log(data.proveedores);
+    console.log(data.referencias);
     if (data.proveedores === undefined) {
       console.log("entro undifined");
       Swal.fire({
@@ -61,6 +67,32 @@ const Main = () => {
       return false;
     }
 
+    if (data.referencias === undefined) {
+      console.log("entro undifined");
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Por favor espere mientras se agregan los referencias",
+      });
+      return false;
+    } else if (data.referencias.length === 0 && referencias.length > 0) {
+      console.log("entro leght 0 referencias.length > 0 ");
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Por favor espere mientras se agregan los referencias",
+      });
+      return false;
+    } else if (data.referencias.length === 0 && referencias.length === 0) {
+      console.log("entro los 2 con 0");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No ha agregado referencias para su referencia",
+      });
+      return false;
+    }
+
     const settings = {
       method: "POST",
       body: data,
@@ -70,7 +102,9 @@ const Main = () => {
     };
 
     const url =
-      "https://prod-10.brazilsouth.logic.azure.com:443/workflows/c282f81e25db40b09e01bdf10733cb65/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=9Hi-Mm7X_KolJtM1ntjpdemP-CsUTYJOqPk7T6K_kDc";
+          // "https://prod-13.brazilsouth.logic.azure.com:443/workflows/3bc1a9e86ba64d38a4ce61dd247fe905/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ivHTwWSxu5aTQJahIgNh7Ijj4ATMTg_s23KTDkyhbiA";
+          "https://prod-10.brazilsouth.logic.azure.com:443/workflows/c282f81e25db40b09e01bdf10733cb65/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=9Hi-Mm7X_KolJtM1ntjpdemP-CsUTYJOqPk7T6K_kDc";
+      
 
     Swal.fire({
       title: "¿Esta seguro?",
@@ -106,6 +140,7 @@ const Main = () => {
         document.getElementById("unidad_medida_1").selectedIndex = 0;
         document.getElementById("unidad_medida_2").selectedIndex = 0;
         setProveedores([]);
+        setReferencias([]);
         setValue("proveedores", [])
       }
     });
@@ -283,7 +318,14 @@ const Main = () => {
             </div>
           </div>
           <div className="row g-2 align-items-center">
-            <label htmlFor="recurso" className="col-sm-3 col-form-label">
+
+          <Referencias
+              referencias={referencias}
+              setReferencias={setReferencias}
+              setValue={setValue}
+            />
+            
+            {/* <label htmlFor="recurso" className="col-sm-3 col-form-label">
               SKU
               <span className="text-danger"> *</span>
             </label>
@@ -294,9 +336,9 @@ const Main = () => {
                   {...register("skuRefProveedor", { required: true, maxLength: 19})}
                   onChange={onChange}
                 />
-            </div>
+            </div> */}
           </div>
-          {errors?.skuRefProveedor?.type === "required" && (
+          {/* {errors?.skuRefProveedor?.type === "required" && (
             <div class="alert alert-danger" role="alert">
               SKU o Referencia del Proveedor Requerida
             </div>
@@ -305,13 +347,13 @@ const Main = () => {
             <div class="alert alert-danger" role="alert">
               SKU cuenta con Maximo 19 caracteres
             </div>
-          )}
-          <Input register={register} campo={"descripcion"} required={true} />
+          )} */}
+          {/* <Input register={register} campo={"descripcion"} required={true} />
           {errors?.descripcion?.type === "required" && (
             <div class="alert alert-danger" role="alert">
               Descripcion requerida
             </div>
-          )}
+          )} */}
           <Select json={json} register={register} campo={"unidad_medida_1"} />
           {errors?.unidad_medida_1?.type === "required" && (
             <div class="alert alert-danger" role="alert">
@@ -358,11 +400,11 @@ const Main = () => {
           </div>
           <div className="row g-2 align-items-center">
             <div className="col-sm-6">
-              <Input
+              {/* <Input
                 register={register}
                 campo={"costoEstandar"}
                 required={false}
-              />
+              /> */}
             </div>
             <div className="col-sm-6">
               <InputRadio
