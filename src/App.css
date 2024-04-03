@@ -43,6 +43,9 @@
 .main-header a {
   color: white;
 }
+a{
+  margin-left: 20px;
+}
 
 nav {
   float: right;
