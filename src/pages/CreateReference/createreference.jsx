@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import json from "../resources.json";
-import Input from "./input";
-import Proveedores from "./proveedores";
-import InputRadio from "./radio";
-import Select from "./select";
+import json from "./resources.json";
+import Input from "../../components/input";
+import InputRadio from "../../components/radio";
+import Select from "../../components/select";
 import Swal from "sweetalert2";
 import axios from "axios";
-import Referencias from "./referencias";
+import Referencias from "./components/Referencias";
+import Proveedores from "./components/Proveedores";
 
-const Main = () => {
+const CreateReference = () => {
   const {
     register,
     formState: { errors },
@@ -272,7 +272,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"tipo_producto"} onChange={(e) => onChangeTipoProducto(e)}/>
               {errors?.tipo_producto?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   {errors?.tipo_producto?.message}
                 </div>
               )}
@@ -284,7 +284,7 @@ const Main = () => {
                 campo={"linea_comercial"}
               />
               {errors?.linea_comercial?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   {errors?.linea_comercial?.message}
                 </div>
               )}
@@ -299,7 +299,7 @@ const Main = () => {
                 onChange={onChange}
               />
               {errors?.origen?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   {errors.origen.message}
                 </div>
               )}
@@ -311,7 +311,7 @@ const Main = () => {
                 required={true}
               />
               {errors?.copiarReferencia?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   Copia desde referencia es obligatoria
                 </div>
               )}
@@ -339,24 +339,24 @@ const Main = () => {
             </div> */}
           </div>
           {/* {errors?.skuRefProveedor?.type === "required" && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               SKU o Referencia del Proveedor Requerida
             </div>
           )}
           {errors?.skuRefProveedor?.type === "maxLength" && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               SKU cuenta con Maximo 19 caracteres
             </div>
           )} */}
           {/* <Input register={register} campo={"descripcion"} required={true} />
           {errors?.descripcion?.type === "required" && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               Descripcion requerida
             </div>
           )} */}
           <Select json={json} register={register} campo={"unidad_medida_1"} />
           {errors?.unidad_medida_1?.type === "required" && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               Unidad de Medida Requerida
             </div>
           )}
@@ -368,7 +368,7 @@ const Main = () => {
                 campo={"deposito"}
               ></Select>
               {errors?.deposito?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   El deposito es obligatorio
                 </div>
               )}
@@ -376,7 +376,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"grupo"}></Select>
               {errors?.grupo?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   El grupo es obligatorio
                 </div>
               )}
@@ -414,7 +414,7 @@ const Main = () => {
                 required={true}
               />
               {errors?.controla_serial?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   Especifique si la referencia controla o no serial
                 </div>
               )}
@@ -436,7 +436,7 @@ const Main = () => {
                   required={true}
                 />
                 {errors?.cantidad_embalaje?.type === "required" && (
-                  <div class="alert alert-danger" role="alert">
+                  <div className="alert alert-danger" role="alert">
                     Ingrese la cantidad de embalaje
                   </div>
                 )}
@@ -449,7 +449,7 @@ const Main = () => {
                   required={true}
                 />
                 {errors?.lote_minimo?.type === "required" && (
-                  <div class="alert alert-danger" role="alert">
+                  <div className="alert alert-danger" role="alert">
                     Ingrese el lote minimo
                   </div>
                 )}
@@ -484,7 +484,7 @@ const Main = () => {
                 required={true}
               />
               {errors?.control_calidad?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   Especifique si la referencia tiene control de calidad
                 </div>
               )}
@@ -496,7 +496,7 @@ const Main = () => {
                 campo={"centro_costo"}
               ></Select>
               {errors?.centro_costo?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   El centro de costo es obligatorio
                 </div>
               )}
@@ -526,7 +526,7 @@ const Main = () => {
                 required={venta}
               />
               {errors?.precioVenta?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   El precio de venta es obligatoria
                 </div>
               )}
@@ -534,7 +534,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"categoria_1"} />
               {errors?.categoria_1?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   La categoria 1 es obligatoria
                 </div>
               )}
@@ -544,7 +544,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"categoria_2"} />
               {errors?.categoria_2?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   La categoria 2 es obligatoria
                 </div>
               )}
@@ -552,7 +552,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"categoria_3"} />
               {errors?.categoria_3?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   La categoria 3 es obligatoria
                 </div>
               )}
@@ -562,7 +562,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"categoria_4"} />
               {errors?.categoria_4?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   La categoria 4 es obligatoria
                 </div>
               )}
@@ -570,7 +570,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"categoria_5"} />
               {errors?.categoria_5?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   La categoria 5 es obligatoria
                 </div>
               )}
@@ -580,7 +580,7 @@ const Main = () => {
             <div className="col-sm-6">
               <Select json={json} register={register} campo={"mercado"} />
               {errors?.mercado?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   {errors?.mercado?.message}
                 </div>
               )}
@@ -593,7 +593,7 @@ const Main = () => {
                 required={true}
               />
               {errors?.habilita_portal?.type === "required" && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   Especifique si la referencia se habilita en el portal
                 </div>
               )}
@@ -605,7 +605,7 @@ const Main = () => {
           <div className="col-sm-6">
             <Input register={register} campo={"nombre"} required={true} />
             {errors?.nombre?.type === "required" && (
-              <div class="alert alert-danger" role="alert">
+              <div className="alert alert-danger" role="alert">
                 El nombre del solicitante es requerido
               </div>
             )}
@@ -617,7 +617,7 @@ const Main = () => {
               required={true}
             />
             {errors?.correo_electronico?.type === "required" && (
-              <div class="alert alert-danger" role="alert">
+              <div className="alert alert-danger" role="alert">
                 El correo electronico es obligatoria
               </div>
             )}
@@ -631,8 +631,12 @@ const Main = () => {
           <p></p>
         </div>
       </div>
+
+      <pre>
+      {console.log(json)}
+      </pre>
     </form>
   );
 };
 
-export default Main;
+export default CreateReference;

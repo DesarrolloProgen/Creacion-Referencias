@@ -1,5 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
-
 const campos = {
   copiarReferencia: "Copia referencia desde",
   skuRefProveedor: "SKU o Referencia del Proveedor",
@@ -18,10 +16,11 @@ const campos = {
   precioVenta: "Precio de venta",
   cantidadProveedores: "Cantidad de Proveedores",
   nombre: "Nombre",
-  correo_electronico: "Email"
+  correo_electronico: "Email",
+  
 };
 
-const Input = ({ register, campo, required, onChange, errors }) => {
+const Input = ({ register, campo, required, onChange, type, errors }) => {
   return (
     <div className="row g-2 align-items-center">
       <label htmlFor="recurso" className="col-sm-3 col-form-label">

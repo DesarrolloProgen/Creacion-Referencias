@@ -12,14 +12,14 @@ const campos = {
   categoria_5: "Categoria 5",
   mercado: "Mercado",
   unidad_medida_1: "Unidad de Medida",
-  unidad_medida_2: "Unidad de Medida 2"
+  unidad_medida_2: "Unidad de Medida 2",
 };
 
 const Select = ({ json, register, campo, onChange }) => {
   return (
     
     <div className="row g-2 align-items-center">
-      <label htmlFor="recurso" className="col-sm-3 ">
+      <label className="col-sm-3 ">
         {campos[campo] }
         {campo !== "unidad_medida_2" && <span className="text-danger">  *</span>}
       </label>
@@ -27,14 +27,15 @@ const Select = ({ json, register, campo, onChange }) => {
         <select
           className="form-select form-select-padding-x-margin-y"
           id={campo}
+          name={campo}
           {...register(campo, { required: true })}
           onChange={onChange}
         >
           <option disabled selected>
             Selecciona el {campos[campo]}
           </option>
-          {json[0][campo].map((tipo) => (
-            <option value={tipo}>{tipo}</option>
+          {json[campo].map((tipo) => (
+            <option key={tipo} value={tipo}>{tipo}</option>
           ))}
         </select>
       </div>

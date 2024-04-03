@@ -1,0 +1,109 @@
+{
+    "procedimiento": [
+        "Si",
+        "No"
+    ],
+    "estructura": [
+        "Si",
+        "No"
+    ],
+    "accion_procedimiento": [
+        "Creación",
+        "Modificación"
+    ],
+    "tipo_operacion": [
+        "Interna",
+        "Externa"
+    ],
+    "codigo_procedimiento": [
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19"
+    ],
+    "lote_estandar_procedimiento": [
+        1000,
+        10000
+    ],
+    "recurso_interno": [
+        "0PTN2 - PRUEBA DE CAMARA",
+        "0PTN3 - CORTE DE MALLA",
+        "1CIZ1 - CIZALLA",
+        "1PRF1 - PRENSA FORJA DE FRICCIÒN",
+        "1SSM1 - SIERRA CIRCULAR ELÈCTRICA",
+        "1SSM2 - SIERRA",
+        "1TRO1 - TROQUELADORA 100 TN.",
+        "1TRO2 - TROQUELADORA 80 TN.",
+        "1TRO3 - TROQUELADORA 40 TN.",
+        "1TRO4 - TROQUELADORAS",
+        "2BAE1 - DISPOSITIVO DOBLAR",
+        "2BAE10 - RETIRAR PROTECTOR PLASTICO",
+        "8PUE14 - ENSAMBLAR",
+        "8PUE15 - EMPAQUE OTROS REPUESTOS",
+        "8PUE2 - PROBAR LLAVE",
+        "8PUE3 - ENSAMBLAR BOQUILLA",
+        "8PUE4 - ENSAMBLE PARTES MULTIUSO",
+        "8PUE5 - CELDA ENS.FUMIGADORAS",
+        "8PUE6 - CELDA ENSAMBLE MULTI USOS",
+        "8PUE7 - EMPAQUE REPUESTO AUTOBAG",
+        "8PUE8 - ENSAMBLE OTROS REPUESTOS",
+        "8PUE9 - FUMIGADORA A MOTOR",
+        "8PUE16 - FUMIGADORAS A MOTOR II",
+        "9MTO1 - BANCOS DE CALIBRACIÓN"
+    ],
+    "recurso_externo": [
+        "10M01 - MAQUILA DE ZINCADO",
+        "10M02 - MAQUILA DE INYECCIÓN",
+        "10M03 - MAQUILA DE FABRICACIÓN",
+        "10M04 - MAQUILA DE MECANIZADO",
+        "10M05 - MAQUILA DE CROMADO",
+        "10M06 - MAQUILA DE PINTURA",
+        "10M07 - MAQUILA DE ENSAMBLE",
+        "10M08 - MAQUILA DE PULVERIZADO",
+        "10M09 - MAQUILA DE EMPAQUE"
+    ],
+    "accion_estructura": [
+        "Creación",
+        "Modificación"
+    ],
+    "codigo_estructura": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "109"
+    ],
+    "lote_estandar_estructura": [
+        1000,
+        10000
+    ],
+    "bodega_consumo": [
+        "001 - PLN. METALMECANICA",
+        "002 - PLN. PLASTICOS",
+        "004 - PRODUCCION - MOTORIZADOS",
+        "005 - MAQUILA",
+        "006 - MAQUILA - RESORTECNICA",
+        "007 - MAQUILA - PROMEVEL",
+        "008 - MAQUILA - GOOD CLEAN",
+        "M10 - CINTAS SENALES VIALES"
+    ],
+    "opcional":[
+        "Si",
+        "No"
+    ],
+    "default": [
+        "Si",
+        "No"
+    ]
+}
