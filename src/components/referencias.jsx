@@ -67,7 +67,7 @@ const Referencias = ({ referencias, setReferencias }) => {
                 name="sku"
                 ref={sku}
                 onChange={handleChange}
-                maxLength={19}
+                maxLength={24}
               />
             </div>
           </div>
